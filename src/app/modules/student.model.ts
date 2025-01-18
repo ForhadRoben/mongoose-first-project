@@ -1,4 +1,5 @@
 import { model, Schema } from 'mongoose';
+import validator from 'validator';
 import {
   Guardian,
   LocalGuardian,
@@ -32,6 +33,17 @@ const userNameSchema = new Schema<UserName>({
     type: String,
     trim: true,
     required: [true, 'Last name is required.'],
+    validate: {
+      validator: (value: string) => validator.isAlpha(value),
+      message: '{VALUE} is not valid last name',
+    },
+    // validate: {
+    //   validator: function (value: string) {
+    //     // Check if lastName starts with the same letter as firstName
+    //     return value.charAt(0) === this.firstName.charAt(0);
+    //   },
+    //   message: '{VALUE} must start with the same letter as first name.',
+    // },
   },
 });
 
@@ -113,6 +125,10 @@ const studentSchema = new Schema<Student>({
     type: String,
     required: [true, 'Email is required.'],
     unique: true,
+    validate: {
+      validator: (value) => validator.isEmail(value),
+      message: '{VALUE} is not valid email',
+    },
   },
   contactNo: {
     type: String,
