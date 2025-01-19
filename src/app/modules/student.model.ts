@@ -13,18 +13,18 @@ const userNameSchema = new Schema<UserName>({
     type: String,
     required: [true, 'First name is required.'],
     maxLength: [20, 'Name can not be more than 20 characters'],
-    validate: {
+    /* validate: {
       validator: function (value: string) {
         const firstNameStr = value.charAt(0).toUpperCase() + value.slice(1);
         return value === firstNameStr;
       },
-      //   if (value !== firstNameStr) {
-      //     return false;
-      //   }
-      //   return true;
       message: '{VALUE} is not in capitalize format',
-    },
+    }, */
   },
+  //   if (value !== firstNameStr) {
+  //     return false;
+  //   }
+  //   return true;
   middleName: {
     type: String,
     trim: true,
@@ -33,17 +33,17 @@ const userNameSchema = new Schema<UserName>({
     type: String,
     trim: true,
     required: [true, 'Last name is required.'],
-    validate: {
+    /* validate: {
       validator: (value: string) => validator.isAlpha(value),
       message: '{VALUE} is not valid last name',
-    },
-    // validate: {
-    //   validator: function (value: string) {
-    //     // Check if lastName starts with the same letter as firstName
-    //     return value.charAt(0) === this.firstName.charAt(0);
-    //   },
-    //   message: '{VALUE} must start with the same letter as first name.',
-    // },
+    }, */
+    /* validate: {
+      validator: function (value: string) {
+        // Check if lastName starts with the same letter as firstName
+        return value.charAt(0) === this.firstName.charAt(0);
+      },
+      message: '{VALUE} must start with the same letter as first name.',
+    }, */
   },
 });
 
