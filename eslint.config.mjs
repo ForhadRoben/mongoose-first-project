@@ -11,7 +11,8 @@ export default [
 
     ignores: ['**/node_modules/', '**/dist/'],
     languageOptions: {
-      globals: { ...globals.browser, process: 'readonly' },
+      // globals: { ...globals.browser, process: 'readonly' },
+      globals: { ...globals.node },
     },
     rules: {
       'no-unused-vars': 'error',
